@@ -5,6 +5,7 @@
 
 ## 📜 Description:
 This is my personal Git Tracker. This was made as i try to make all the changes and then commit and push in one go which makes it harder to revert back as a lot of changes are done and some are necessary too. This makes debugging as well as time consuming.
+
 The idea is to commit every 15 minutes and check for modified or Added files and commit as per:
 - Modified: file_name
 - Added: file_name
