@@ -6,5 +6,5 @@ def run(*args):
 
 run("status")
 run("add", ".")
-run("commit", "-m", "Testing Purpose")
+run("commit", "-m", "Testing Purpose - 2")
 run("push")
