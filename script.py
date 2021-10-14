@@ -9,7 +9,6 @@ commitMessage = ""
 
 status = subprocess.getoutput('git status')
 if checkIfNecessary := re.search('nothing to commit, working tree clean', status):
-    print("No Commit Required.")
     exit()
 
 else:
@@ -30,9 +29,7 @@ else:
     searchRenamed = re.findall('renamed:(.*)\n', status)
     for renamed in searchRenamed:
         commitMessage += "Renamed: " + renamed.strip() + "\n"
-
-print(commitMessage)
-
+        
 run("add", ".")
 run("commit", "-m", commitMessage)
 run("push")
