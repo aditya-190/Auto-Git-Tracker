@@ -40,7 +40,9 @@ else:
 print("Pushing Process - Started.")
 
 run("commit", "-m", commitMessage)
-run("push")
+
+print(commitMessage)
+#run("push")
 
 print("Pushing Process - Done.")
 
