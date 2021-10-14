@@ -23,7 +23,7 @@ else:
     for modified in searchModified:
         commitMessage += "Modified: " + modified.strip() + "\n"
 
-    searchAdded = re.findall('added:(.*)\n', status)
+    searchAdded = re.findall('new file:(.*)\n', status)
     for added in searchAdded:
         commitMessage += "Added: " + added.strip() + "\n"
 
@@ -37,11 +37,7 @@ else:
     for renamed in searchRenamed:
         commitMessage += "Renamed: " + renamed.strip() + "\n"
 
-print("Pushing Process - Started.")
 print(commitMessage)
 run("commit", "-m", commitMessage)
 run("push")
-
-print("Pushing Process - Done.")
-
 exit()
