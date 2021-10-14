@@ -5,10 +5,17 @@ def run(*args):
     return subprocess.check_call(['git'] + list(args))
 
 
+run("add", ".")
 commitMessage = ""
-
 status = subprocess.getoutput('git status')
-if checkIfNecessary := re.search('nothing to commit, working tree clean', status):
+
+if re.search('Your branch is ahead of', status):
+    print("Already Commited - Just Pushing :)")
+    run("push")
+    exit()
+    
+elif checkIfNecessary := re.search('nothing to commit, working tree clean', status):
+    print("Nothing to commit :(")
     exit()
 
 else:
@@ -29,8 +36,12 @@ else:
     searchRenamed = re.findall('renamed:(.*)\n', status)
     for renamed in searchRenamed:
         commitMessage += "Renamed: " + renamed.strip() + "\n"
-        
-run("add", ".")
+
+print("Pushing Process - Started.")
+
 run("commit", "-m", commitMessage)
 run("push")
+
+print("Pushing Process - Done.")
+
 exit()
