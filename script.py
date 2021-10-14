@@ -14,7 +14,7 @@ if checkIfNecessary := re.search('nothing to commit, working tree clean', status
 else:
     searchModified = re.findall('modified:(.*)\n', status)
     for modified in searchModified:
-        commitMessage += "Changed: " + modified.strip() + "\n"
+        commitMessage += "Modified: " + modified.strip() + "\n"
 
     searchAdded = re.findall('added:(.*)\n', status)
     for added in searchAdded:
@@ -23,7 +23,7 @@ else:
 
     searchDeleted = re.findall('deleted:(.*)\n', status)
     for deleted in searchDeleted:
-        commitMessage += "Deleted: " + deleted.strip() + "\n"
+        commitMessage += "Removed: " + deleted.strip() + "\n"
 
 
     searchRenamed = re.findall('renamed:(.*)\n', status)
