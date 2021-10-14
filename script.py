@@ -6,11 +6,11 @@ def run(*args):
 
 
 run("add", ".")
-commitMessage = "Detailed Commit - \n"
+commitMessage = "Detailed Commit (Auto Tracker) - \n"
 status = subprocess.getoutput('git status')
 
 if re.search('Your branch is ahead of', status):
-    print("Already Commited - Just Pushing :)")
+    print("Already Commited - Just a push away :)")
     run("push")
     exit()
     
@@ -21,21 +21,21 @@ elif checkIfNecessary := re.search('nothing to commit, working tree clean', stat
 else:
     searchModified = re.findall('modified:(.*)\n', status)
     for modified in searchModified:
-        commitMessage += "Modified: " + modified.strip() + "\n"
+        commitMessage += "Modified: " + modified.strip() + "- From Auto Tracker.\n"
 
     searchAdded = re.findall('new file:(.*)\n', status)
     for added in searchAdded:
-        commitMessage += "Added: " + added.strip() + "\n"
+        commitMessage += "Added: " + added.strip() + "- From Auto Tracker.\n"
 
 
     searchDeleted = re.findall('deleted:(.*)\n', status)
     for deleted in searchDeleted:
-        commitMessage += "Removed: " + deleted.strip() + "\n"
+        commitMessage += "Removed: " + deleted.strip() + "- From Auto Tracker.\n"
 
 
     searchRenamed = re.findall('renamed:(.*)\n', status)
     for renamed in searchRenamed:
-        commitMessage += "Renamed: " + renamed.strip() + "\n"
+        commitMessage += "Renamed: " + renamed.strip() + "- From Auto Tracker.\n"
 
 print(commitMessage)
 run("commit", "-m", commitMessage)
