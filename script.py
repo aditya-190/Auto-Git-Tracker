@@ -21,21 +21,21 @@ elif checkIfNecessary := re.search('nothing to commit, working tree clean', stat
 else:
     searchModified = re.findall('modified:(.*)\n', status)
     for modified in searchModified:
-        commitMessage += "Modified: " + modified.strip() + "- From Auto Tracker.\n"
+        commitMessage += "Modified: " + modified.strip() + " - From Auto Tracker.\n"
 
     searchAdded = re.findall('new file:(.*)\n', status)
     for added in searchAdded:
-        commitMessage += "Added: " + added.strip() + "- From Auto Tracker.\n"
+        commitMessage += "Added: " + added.strip() + " - From Auto Tracker.\n"
 
 
     searchDeleted = re.findall('deleted:(.*)\n', status)
     for deleted in searchDeleted:
-        commitMessage += "Removed: " + deleted.strip() + "- From Auto Tracker.\n"
+        commitMessage += "Removed: " + deleted.strip() + " - From Auto Tracker.\n"
 
 
     searchRenamed = re.findall('renamed:(.*)\n', status)
     for renamed in searchRenamed:
-        commitMessage += "Renamed: " + renamed.strip() + "- From Auto Tracker.\n"
+        commitMessage += "Renamed: " + renamed.strip() + " - From Auto Tracker.\n"
 
 print(commitMessage)
 run("commit", "-m", commitMessage)
