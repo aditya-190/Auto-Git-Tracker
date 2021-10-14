@@ -6,7 +6,7 @@ def run(*args):
 
 
 run("add", ".")
-commitMessage = ""
+commitMessage = "Detailed Commit - \n"
 status = subprocess.getoutput('git status')
 
 if re.search('Your branch is ahead of', status):
