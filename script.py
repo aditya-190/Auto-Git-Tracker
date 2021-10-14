@@ -1,7 +1,9 @@
-import subprocess, re
+import subprocess, schedule, time, re, os, sys
 from datetime import datetime
 
 def run():
+    directory = sys.argv[0].replace("/auto-git-tracker.py", "") 
+    os.chdir(directory)
     subprocess.check_call(['git'] + ['add'] + ['.'])
     commitMessage = "Detailed Commit (Auto Tracker) - \n"
     status = subprocess.getoutput('git status')
@@ -33,10 +35,15 @@ def run():
         searchRenamed = re.findall('renamed:(.*)\n', status)
         for renamed in searchRenamed:
             commitMessage += "Renamed: " + renamed.strip() + " - From Auto Tracker.\n"
-
-    print(commitMessage)
+    
     subprocess.check_call(['git'] + ['commit'] + ['-m'] + [commitMessage])
     subprocess.check_call(['git'] + ['push'])
+
+    print("Commit Done")
     return
 
-run()
+schedule.every(10).minutes.do(run)
+
+while True:
+    schedule.run_pending()
+    time.sleep(1)
