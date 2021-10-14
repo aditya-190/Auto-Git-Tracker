@@ -36,4 +36,4 @@ print(commitMessage)
 run("add", ".")
 run("commit", "-m", commitMessage)
 run("push")
-
+exit()
