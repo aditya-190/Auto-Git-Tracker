@@ -6,9 +6,12 @@
 ## 📜 Description:
 This is my personal Git Tracker. This was made as i try to make all the changes and then commit and push in one go which makes it harder to revert back as a lot of changes are done and some are necessary too. This makes debugging as well as time consuming.
 The idea is to commit every 15 minutes and check for modified or Added files and commit as per:
-- If Modified file XYZ. Say XYZ is changed at [TIME] - From Auto Tracker.
-- If Added file XYZ. Say XYZ is added at [TIME] - From Auto Tracker.
-- If Deleted file XYZ. Say XYZ is removed at [TIME] - From Auto Tracker.
+- Modified: file_name
+- Added: file_name
+- Deleted: file_name
+- Renamed: file_name
+
+Note: This will only consider commiting only when there are changes in the local otherwise it will close the program.
 
 
 ## 👦 Developed By:
