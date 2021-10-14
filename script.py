@@ -38,11 +38,9 @@ else:
         commitMessage += "Renamed: " + renamed.strip() + "\n"
 
 print("Pushing Process - Started.")
-
-run("commit", "-m", commitMessage)
-
 print(commitMessage)
-#run("push")
+run("commit", "-m", commitMessage)
+run("push")
 
 print("Pushing Process - Done.")
 
